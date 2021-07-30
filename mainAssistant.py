@@ -475,6 +475,8 @@ def calling():
                 print('''=============== TIMES OF INDIA ============''' + '\n')
 
                 for item in data['articles']:
+                    if (i == 6):
+                        break
                     print(str(i) + '. ' + item['title'] + '\n')
                     print(item['description'] + '\n')
                     speak(str(i) + '. ' + item['title'] + '\n')
