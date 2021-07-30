@@ -15,13 +15,14 @@ import winshell
 import ctypes
 import smtplib
 import pyautogui
+import threading
+import cv2
 
 ######################################################    Engine    #################################################################
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
-
 
 def speak(audio):
     engine.say(audio)
@@ -52,7 +53,6 @@ def usrname():
     speak(uname)
     print("Welcome", uname + "!!!\n")
     speak("How can i Help you")
-
 
 def takeCommand():
     r = sr.Recognizer()
@@ -93,7 +93,7 @@ def calling():
     while True:
         query = takeCommand().lower()
 
-        if 'wikipedia' in query:
+        if 'on wikipedia' in query:
             try:
                 speak('Searching Wikipedia...')
                 query = query.replace("wikipedia", "")
@@ -120,11 +120,6 @@ def calling():
             url = ("https://www.stackoverflow.com")
             speak("Here you go to stackoverflow\n")
             webbrowser.open("stackoverflow.com")
-
-        elif "open wikipedia" in query:
-            url = ("https://www.wikipedia.com")
-            speak("Here you go to wikipedia\n")
-            webbrowser.open("wikipedia.com")
 
         elif "open github" in query:
             url = ("https://www.github.com")
@@ -187,9 +182,14 @@ def calling():
             os.startfile(power)
 
         elif 'take screenshot' in query:
+
+            x = random.randint(0, 100000000000000000000000000000000)
+
+            img = pyautogui.screenshot()
+            img.save("D:/" + "image " + str(x) + ".png")
+            time.sleep(2)
+            
             speak("saved succesfully")
-            myScreenshot = pyautogui.screenshot()
-            myScreenshot.save(r'D:\screenshot.png')
 
         elif 'open camera' in query:
             speak("opening camera. press spacebar to exit camera")
@@ -245,7 +245,8 @@ def calling():
 
         elif 'how can you help me' in query:
             speak("I can do various tasks like the following")
-            print("")
+            print("1. Send Mails \n 2. Read News \n 3.Play Music \n 4. Take Notes \n 5. Search on web and much more...")
+            speak(" 1. Send Mails \n 2. Read News \n 3.Play Music \n 4. Take Notes \n 5. Search on web and much more...")
 
         elif "play punjabi music" in query:
             url = "https://wynk.in/music/package/punjabi-top-50/bb_1512370496100"
@@ -330,13 +331,14 @@ def calling():
         elif 'fine' in query:
             speak("It's good to know that your fine")
 
+        # elif "what is my name" in query or "what's my name" in query:
+        #     uname = usrname()
+        #     speak("I call you" + uname)
+
         elif "change my name" in query:
             speak("What should i call you")
             uname = takeCommand()
             speak("Ok from now onwards I will call you" + uname)
-
-        elif "what is my name" in query or "what's my name" in query:
-            speak("I call you" + uname)
 
         elif "change your name" in query:
             speak("What would you like to call me")
@@ -350,8 +352,12 @@ def calling():
             query = query.replace("say", "")
             speak(query)
 
-        elif "what is your name" in query or "what's your name" in query:
-            speak("My friends call me" + assname)
+        elif "repeat" in query:
+            query = query.replace("repeat", "")
+            speak(query)
+
+        # elif "what is your name" in query or "what's your name" in query:
+        #     speak("My friends call me" + assname)
 
         elif "cool" in query:
             speak("I know")
@@ -410,7 +416,7 @@ def calling():
         elif "i love you" in query:
             speak("It's hard to understand")
 
-        elif "Edith" in query:
+        elif "my assistant" in query:
             speak("Edith reporting on duty sir")
 
         elif "aur bata" in query or "or batao" in query:

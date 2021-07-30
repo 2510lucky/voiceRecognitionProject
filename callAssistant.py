@@ -24,16 +24,20 @@ class Window(Frame):
         a = Button(master, text="Edith!", width=20, border="20", relief="groove", command=threading.Thread(target=self.Processo_r).start, bg='blue', fg='yellow', font=buttonFont2)
         a.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-        b = Button(master, text="Stop", width=10, border="50", relief="groove", command=root.destroy, bg='red', font=buttonFont2)
+        b = Button(master, text="Stop", width=10, border="50", relief="groove", command=self.terminate, bg='red', font=buttonFont2)
         b.place(relx=0.5, rely=0.8, anchor=CENTER)
 
     def Processo_r(self):
         mainAssistant.calling()
 
+    def terminate(self):
+        root.destroy()
+        exit(1)
+        
 root = Tk()
 
 app = Window(root)
 root.geometry("500x500")
 root.configure(bg='black')
-root.wm_iconbitmap('images/speech_recognition.ico')
+root.wm_iconbitmap('speech_recognition.ico')
 root.mainloop()
