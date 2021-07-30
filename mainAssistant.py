@@ -15,7 +15,6 @@ import winshell
 import ctypes
 import smtplib
 import pyautogui
-import threading
 import cv2
 
 ######################################################    Engine    #################################################################
@@ -190,6 +189,13 @@ def calling():
             time.sleep(2)
             
             speak("saved succesfully")
+
+            # for i in range(60):
+            #     ss = pyautogui.screenshot()
+
+            #     ss.save(f"SS {i}.png")
+
+            #     time.sleep(5)
 
         elif 'open camera' in query:
             speak("opening camera. press spacebar to exit camera")
