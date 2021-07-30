@@ -251,8 +251,8 @@ def calling():
 
         elif 'how can you help me' in query:
             speak("I can do various tasks like the following")
-            print("1. Send Mails \n 2. Read News \n 3.Play Music \n 4. Take Notes \n 5. Search on web and much more...")
-            speak(" 1. Send Mails \n 2. Read News \n 3.Play Music \n 4. Take Notes \n 5. Search on web and much more...")
+            print(" 1. Send Mails \n 2. Read News \n 3. Play Music \n 4. Take Notes \n 5. Search on web and much more...")
+            speak("1. Send Mails \n 2. Read News \n 3. Play Music \n 4. Take Notes \n 5. Search on web and much more...")
 
         elif "play punjabi music" in query:
             url = "https://wynk.in/music/package/punjabi-top-50/bb_1512370496100"
