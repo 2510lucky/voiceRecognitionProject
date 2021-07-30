@@ -256,8 +256,8 @@ def calling():
 
         elif 'how can you help me' in query:
             speak("I can do various tasks like the following")
-            print("1. Send Mails \n 2. Read News \n 3.Play Music \n 4. Take Notes \n 5. Search on web and much more...")
-            speak(" 1. Send Mails \n 2. Read News \n 3.Play Music \n 4. Take Notes \n 5. Search on web and much more...")
+            print(" 1. Send Mails \n 2. Read News \n 3. Play Music \n 4. Take Notes \n 5. Search on web and much more...")
+            speak("1. Send Mails \n 2. Read News \n 3. Play Music \n 4. Take Notes \n 5. Search on web and much more...")
 
         elif "play punjabi music" in query:
             url = "https://wynk.in/music/package/punjabi-top-50/bb_1512370496100"
@@ -519,7 +519,12 @@ class Window(Frame):
                   bg='yellow', fg='green', font=buttonFont1)
         A.pack(side="top")
 
-        buttonFont2 = font.Font(family='Helvetica', size=20, weight='bold')
+        Upper = Label(root,text ='Voice Assistant', fg = "red", bg='black', 
+		 font = "Helvetica 16 bold")
+
+        Upper.place(relx = 0.66, rely = 0.2, anchor ='ne')
+
+        buttonFont2 = font.Font(family='Times', size=20, weight='bold')
         a = Button(master, text="Edith!", width=20, border="20", relief="groove", command=threading.Thread(target=self.Processo_r).start, bg='blue', fg='yellow', font=buttonFont2)
         a.place(relx=0.5, rely=0.5, anchor=CENTER)
 
@@ -538,5 +543,6 @@ root = Tk()
 app = Window(root)
 root.geometry("500x500")
 root.configure(bg='black')
-#root.iconbitmap(r'speech_recognition.ico')
+#root.iconbitmap('speech_recognition.ico')
+root.resizable(False, False)
 root.mainloop()
